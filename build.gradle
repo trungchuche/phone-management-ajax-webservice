@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.codegym'
+version '1.0-SNAPSHOT'
+
+ext {
+    junitVersion = '5.10.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << '-parameters'
+    }
+}
+
+dependencies {
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '6.0.13'
+    implementation group: 'org.springframework', name: 'spring-orm', version: '6.0.13'
+    implementation group: 'org.springframework', name: 'spring-tx', version: '6.0.13'
+    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.2.7.Final'
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
+    implementation("org.springframework.data:spring-data-jpa:3.4.2")
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
+    compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+war {
+    archiveFileName = "${project.name}.war"
+}
