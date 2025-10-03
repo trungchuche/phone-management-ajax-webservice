@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<form id="add-smartphone">
+<form id="add-smartphone" style="display: none;">
     <h1>Create New Smartphone</h1>
     <label for="producer">Producer:</label>
     <input type="text" id="producer" placeholder="e.g. Apple">
@@ -21,6 +21,24 @@
     <input type="number" id="price" placeholder="e.g. 999">
 
     <button type="submit" value="Add" onclick="addNewSmartPhone()">Add</button>
+</form>
+
+<form id="update-smartphone" style="display: none;">
+    <h1>Update Smartphone</h1>
+    <label for="id-update">ID:</label>
+    <input type="number" id="id-update" placeholder="e.g. 1" readonly>
+
+    <label for="producer-update">Producer:</label>
+    <input type="text" id="producer-update" placeholder="e.g. Apple">
+
+    <label for="model-update">Model: </label>
+    <input type="text" id="model-update" placeholder="e.g. iPhone 15">
+
+    <label for="price-update">Price: </label>
+    <input type="number" id="price-update" placeholder="e.g. 999">
+
+    <button type="submit" id="saveUpdateSmartphone" value="Update">Update</button>
+    <button type="button" id="cancelUpdateSmartphone">Cancel</button>
 </form>
 
 <h1 id="title">List of Smartphone</h1>
